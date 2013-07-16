@@ -1,28 +1,21 @@
 
 package org.jenkinsci.plugins.pairprogramming;
-import hudson.model.AbstractProject;
 import hudson.model.ProminentProjectAction;
-
-/*
-import hudson.model.Action;
-import java.io.Serializable;
-import org.kohsuke.stapler.StaplerProxy;
-implements Action, Serializable, StaplerProxy {
-*/
+import hudson.model.AbstractProject;
 
 /**
  * @author Ismail Lagouilly
  */
-public class ProjectAction implements ProminentProjectAction {
+public class ProjectAction implements ProminentProjectAction{
 
-    private final AbstractProject<?,?> project;
+    private AbstractProject<?, ?> project;
 
-    public ProjectAction(AbstractProject<?,?> project) {
-	this.project=project;
+	public ProjectAction(AbstractProject<?,?> project) {
+    	this.project=project;
     }
 
     public final String getIconFileName() {
-        return "/webapp/img/Pairprogramming.jpg";
+        return "graph.png";
     }
 
     public final String getDisplayName() {
@@ -32,11 +25,7 @@ public class ProjectAction implements ProminentProjectAction {
     public final String getUrlName() {
         return "pair-programming";
     }
-
-    /*public final getTarget(){
     
-    }*/
-
     public AbstractProject<?,?> getProject(){
 		return this.project;
 	}
