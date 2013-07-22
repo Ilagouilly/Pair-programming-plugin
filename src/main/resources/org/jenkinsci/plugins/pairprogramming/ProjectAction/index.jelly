@@ -1,0 +1,71 @@
+<j:jelly 	xmlns:j="jelly:core" 
+			xmlns:st="jelly:stapler" 
+			xmlns:d="jelly:define" 
+			xmlns:l="/lib/layout"
+         	xmlns:t="/lib/hudson" 
+         	xmlns:f="/lib/form"
+         	xmlns:v="/hudson/plugins/violations/tags"
+			xmlns:i="jelly:fmt"
+			xmlns:p="/lib/hudson/project">
+	
+	<l:layout>
+		
+		<j:set var="project" value="${it.project}" />
+		<j:set var="build" value="${it.build}" />
+		
+		<j:if test="${project != null}" >
+			<st:include it="${it.project}" page="sidepanel.jelly"/>
+		</j:if>
+		<j:if test="${build != null}" >
+			<st:include it="${it.build}" page="sidepanel.jelly"/>
+		</j:if>
+  		
+		<l:main-panel>
+		<link rel="stylesheet" type="text/css" href="${rootURL}/plugin/pairprogramming/css/tabview.css" />
+			<link rel="stylesheet" type="text/css" href="${rootURL}/plugin/pairprogramming/css/yui.css" />
+			<link rel="stylesheet" type="text/css" href="${rootURL}/plugin/pairprogramming/css/main_page.css" />
+			<script src="${rootURL}/plugin/pairprogramming/js/yahoo-dom-event.js"></script>
+			<script src="${rootURL}/plugin/pairprogramming/js/element-min.js"></script>
+			<script src="${rootURL}/plugin/pairprogramming/js/tabview-min.js"></script>
+			<script>
+				(function (){
+					var myTabs = new YAHOO.widget.TabView('tabview');
+				})();
+			</script>
+			<center><h2>Pair programming plugin</h2><br/>
+			<img src="http://www.tableau-de-bord.org/images/h10.jpg"/>
+			<img src="http://img577.imageshack.us/img577/6057/ikmt.png"/><br/><br/></center>
+			<div id="tabview" class="yui-navset yui-navset-top">
+					<ul class = "yui-nav">
+						<li class="selected"><a href="#lien1"><em>General stats</em></a></li>
+						<li><a href="#lien2"><em>Stats by package</em></a></li>
+						<li><a href="#lien3"><em>Stats by file</em></a></li>
+						<li><a href="#lien4"><em>Stats by method</em></a></li>
+						<li><a href="#lien4"><em>Stats by developper</em></a></li>
+					</ul>
+					<div class="yui-content">
+					<div id="1">
+						<h2>General stats</h2><br/>
+						Contenu 1
+					</div>
+					<div id="2">
+						<h2>Stats by package</h2><br/>
+						Contenu 2 
+					</div>
+					<div id="3">
+						<h2>Stats by file</h2><br/>
+						Contenu 3 
+					</div>
+					<div id="4">
+						<h2>Stats by method</h2><br/>
+						Contenu 4 
+					</div>
+					<div id="5">
+						<h2>Stats by developer</h2><br/>
+						Contenu 5 
+					</div>
+				</div>
+				</div>
+		</l:main-panel>
+	</l:layout>
+</j:jelly>

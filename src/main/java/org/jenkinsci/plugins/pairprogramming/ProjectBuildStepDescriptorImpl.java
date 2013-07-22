@@ -11,17 +11,18 @@ import hudson.tasks.Publisher;
  */
 @Extension
 public final class ProjectBuildStepDescriptorImpl extends BuildStepDescriptor<Publisher> {
-	
+		
+				// Constructor of the class (calls ProjectRecorderImpl class)
 	public ProjectBuildStepDescriptorImpl(){
 	    super(ProjectRecorderImpl.class);
 	}
 
-	@Override
-    public boolean isApplicable(Class<? extends AbstractProject> jobType) {
+	@Override	// Indicates that this builder can be used with all kinds of project types
+    public boolean isApplicable(Class<? extends AbstractProject> buildType) {
         return true;
     }
 	
-	@Override
+	@Override	// Human readable name is used in the configuration screen
 	public String getDisplayName() {
 		return "Pair programming plugin";
 	}
