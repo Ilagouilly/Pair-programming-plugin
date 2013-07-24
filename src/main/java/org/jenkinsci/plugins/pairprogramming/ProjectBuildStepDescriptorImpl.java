@@ -17,6 +17,7 @@ public final class ProjectBuildStepDescriptorImpl extends BuildStepDescriptor<Pu
 	    super(ProjectRecorderImpl.class);
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override	// Indicates that this builder can be used with all kinds of project types
     public boolean isApplicable(Class<? extends AbstractProject> buildType) {
         return true;

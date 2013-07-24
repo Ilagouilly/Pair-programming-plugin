@@ -1,5 +1,11 @@
 
 package org.jenkinsci.plugins.pairprogramming;
+
+import java.io.IOException;
+
+import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerResponse;
+
 import hudson.model.ProminentProjectAction;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
@@ -25,7 +31,7 @@ public class ProjectAction implements ProminentProjectAction{
     public final String getIconFileName() {
         return "/plugin/pairprogramming/img/Pairprogramming.jpg";
     }
-    			// Displays the name of the plugin in the job using our plugin
+    			// Displays the name of the plugin (in a job)
     public final String getDisplayName() {
         return "Pair programming plugin";
     }
@@ -33,13 +39,21 @@ public class ProjectAction implements ProminentProjectAction{
     public final String getUrlName() {
         return "pair-programming";
     }
-    			// Getter of the projet
+    			// Getter of the project
     public AbstractProject<?,?> getProject(){
 		return this.project;
 	}
     			// Getter of the build
     public AbstractBuild<?,?> getBuild() {
         return this.build;
+    }
+    			// Creates the graph
+    public ProjectGraph getMyGraph(){
+		return new ProjectGraph(-1,600,300, this.getBuild(), "");
+	}
+    			// Displays the graph created by getMyplugin
+    public void doGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
+    	getMyGraph().doPng(req, rsp);
     }
 
 }

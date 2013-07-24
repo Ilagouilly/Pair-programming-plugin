@@ -22,7 +22,6 @@ import hudson.tasks.Publisher;
  */
 public class ProjectRecorderImpl extends Recorder{
 
-	
 	@DataBoundConstructor
 	public ProjectRecorderImpl() {
 	super();
@@ -37,7 +36,7 @@ public class ProjectRecorderImpl extends Recorder{
     		// Displays the link giving access to the plugin in job main page
     @Override
     public Collection<? extends Action> getProjectActions(AbstractProject<?,?> project){
-		
+    	
 		ProjectAction action = new ProjectAction(project);
 		return Collections.singletonList(action);
 	}
@@ -47,7 +46,8 @@ public class ProjectRecorderImpl extends Recorder{
 			throws InterruptedException, IOException {
     	
     	AbstractProject<?, ?> projectResult = null;
-    	build.addAction(new ProjectAction(projectResult, build));
+    	ProjectAction pa = new ProjectAction(projectResult, build);
+    	build.addAction(pa);
 		return true;
 	}
     		// Getter of the variable message
